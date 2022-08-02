@@ -3,8 +3,23 @@ import './App.css'
 import Comments from './components/Comments'
 import Logo from './components/Logo'
 
+
+
+type image = {
+  id: number
+  title: string
+  likes: number
+  image: string
+  comments: Comment[]
+
+}
+type Comment = {
+  id: number
+  content: string
+  imageId: number
+}
 function App() {
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState<image[]>([])
   const [comments, setcomments] = useState([])
 
 
@@ -17,23 +32,21 @@ function App() {
 
   }, [])
 
-  function likeImage(image: any) {
+  // function likeImage(image) {
 
-    return fetch(`http://localhost:3005/images)${image.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ like: image.likes + 1 })
-    })
+  //   return fetch(`http://localhost:3005/images)${image.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ like: image.likes + 1 })
+  //   })
 
-    const updatedImages = (images)
-
-    // const match = updatedImages.find(target => target.id === image.id)
-    // match.likes++
-
-    // setImages(updatedImages)
-  }
+  //   const imagesCopy = JSON.parse(JSON.stringify(images))
+  //   let match = images.copyWithin.find(target => target.id === image.id)
+  //   match.likes++
+  //   setImages(imagesCopy)
+  // }
 
 
 
@@ -57,13 +70,14 @@ function App() {
             <img src={image.image} className="image" />
             <div className="likes-section">
               <span className="likes">{image.likes}</span>
-              <button className="like-button">♥</button>
+              <button className="like-button"
+
+              >♥</button>
             </div>
-            <ul className="comments">
-              <li>Get rid of these comments</li>
-              <li>And replace them with the real ones</li>
-              <li>From the server</li>
-            </ul>
+
+
+
+
           </article>
 
         ))}

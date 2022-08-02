@@ -1,9 +1,13 @@
-function Comments() {
+type Props = {
+    image: image[]
+}
+
+function Comments({ image }: Props) {
     return (
         <ul className="comments">
-            <li>Get rid of these comments</li>
-            <li>And replace them with the real ones</li>
-            <li>From the server</li>
+            {image.comments.map(comment => (
+                <li key={comment.id}> {comment.content}</li>
+            ))}
         </ul>
     )
 }
