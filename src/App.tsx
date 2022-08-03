@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import CardList from './components/CardList'
+import CardImage from './components/CardList'
 import Comments from './components/Comments'
 import Logo from './components/Logo'
 
+export type Comment = {
+  id: number
+  content: string
+  imageId: number
+}
 
-
-type image = {
+export type Image = {
   id: number
   title: string
   likes: number
@@ -13,13 +19,9 @@ type image = {
   comments: Comment[]
 
 }
-type Comment = {
-  id: number
-  content: string
-  imageId: number
-}
+
 function App() {
-  const [images, setImages] = useState<image[]>([])
+  const [images, setImages] = useState<Image[]>([])
   const [comments, setcomments] = useState([])
 
 
@@ -61,28 +63,10 @@ function App() {
 
       < Logo />
 
-
-      <section className="image-container">
-        {images.map(image => (
-          <article className="image-card">
-            <h2 className="title">
-              {image.title}</h2>
-            <img src={image.image} className="image" />
-            <div className="likes-section">
-              <span className="likes">{image.likes}</span>
-              <button className="like-button"
-
-              >♥</button>
-            </div>
+      <CardList images={images} />
 
 
 
-
-          </article>
-
-        ))}
-
-      </section>
 
     </div >
   )

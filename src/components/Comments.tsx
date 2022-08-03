@@ -1,5 +1,8 @@
+import { Image } from "../App"
+
 type Props = {
-    image: image[]
+    image: Image
+
 }
 
 function Comments({ image }: Props) {
